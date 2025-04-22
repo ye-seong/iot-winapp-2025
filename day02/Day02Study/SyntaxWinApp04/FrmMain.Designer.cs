@@ -38,6 +38,8 @@
             BtnOk = new Button();
             LblResult = new Label();
             TxtResult = new TextBox();
+            maskedTextBox1 = new MaskedTextBox();
+            maskedTextBox2 = new MaskedTextBox();
             SuspendLayout();
             // 
             // LblName
@@ -63,7 +65,7 @@
             LblAge.Name = "LblAge";
             LblAge.Size = new Size(62, 15);
             LblAge.TabIndex = 0;
-            LblAge.Text = "나이입력 :";
+            LblAge.Text = "생년월일 :";
             // 
             // TxtAge
             // 
@@ -88,7 +90,7 @@
             RdoMale.Location = new Point(80, 71);
             RdoMale.Name = "RdoMale";
             RdoMale.Size = new Size(49, 19);
-            RdoMale.TabIndex = 2;
+            RdoMale.TabIndex = 3;
             RdoMale.TabStop = true;
             RdoMale.Text = "남성";
             RdoMale.UseVisualStyleBackColor = true;
@@ -99,7 +101,7 @@
             RdoFemale.Location = new Point(135, 71);
             RdoFemale.Name = "RdoFemale";
             RdoFemale.Size = new Size(49, 19);
-            RdoFemale.TabIndex = 2;
+            RdoFemale.TabIndex = 4;
             RdoFemale.Text = "여성";
             RdoFemale.UseVisualStyleBackColor = true;
             // 
@@ -108,10 +110,10 @@
             BtnOk.Location = new Point(472, 259);
             BtnOk.Name = "BtnOk";
             BtnOk.Size = new Size(100, 40);
-            BtnOk.TabIndex = 4;
+            BtnOk.TabIndex = 6;
             BtnOk.Text = "확인";
             BtnOk.UseVisualStyleBackColor = true;
-            BtnOk.Click += this.BtnOk_Click;
+            BtnOk.Click += BtnOk_Click;
             // 
             // LblResult
             // 
@@ -127,13 +129,30 @@
             TxtResult.Location = new Point(80, 133);
             TxtResult.Name = "TxtResult";
             TxtResult.Size = new Size(492, 23);
-            TxtResult.TabIndex = 3;
+            TxtResult.TabIndex = 5;
+            // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.Location = new Point(80, 12);
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(152, 23);
+            maskedTextBox1.TabIndex = 1;
+            // 
+            // maskedTextBox2
+            // 
+            maskedTextBox2.Location = new Point(80, 41);
+            maskedTextBox2.Mask = "0000-00-00";
+            maskedTextBox2.Name = "maskedTextBox2";
+            maskedTextBox2.Size = new Size(152, 23);
+            maskedTextBox2.TabIndex = 2;
             // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(584, 311);
+            Controls.Add(maskedTextBox2);
+            Controls.Add(maskedTextBox1);
             Controls.Add(BtnOk);
             Controls.Add(RdoFemale);
             Controls.Add(RdoMale);
@@ -162,5 +181,7 @@
         private Button BtnOk;
         private Label LblResult;
         private TextBox TxtResult;
+        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox maskedTextBox2;
     }
 }
