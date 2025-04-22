@@ -1,4 +1,4 @@
-namespace SyntaxWinApp04
+ï»¿namespace SyntaxWinApp04
 {
     public partial class FrmMain : Form
     {
@@ -12,13 +12,13 @@ namespace SyntaxWinApp04
         {
             if (TxtName.Text == "" || TxtAge.Text == "")
             {
-                MessageBox.Show("°ªÀ» ÀÔ·ÂÇÏ¼¼¿ä.", "¾Ë¸²", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("ê°’ì„ ì…ë ¥í•˜ì„¸ìš”.", "ì•Œë¦¼", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else
             {
-                LblResult.Text = "Ã³¸®°á°ú : ";
-                TxtResult.Text = "¹º°¡ Ã³¸®µÉ ¿¹Á¤";
+                LblResult.Text = "ì²˜ë¦¬ê²°ê³¼ : ";
+                TxtResult.Text = "ë­”ê°€ ì²˜ë¦¬ë  ì˜ˆì •";
             }    
         }
     }
