@@ -61,12 +61,12 @@ namespace SyntaxWinApp02.Properties {
         }
         
         /// <summary>
-        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static byte[] computer {
+        internal static System.Drawing.Bitmap computer_case {
             get {
-                object obj = ResourceManager.GetObject("computer", resourceCulture);
-                return ((byte[])(obj));
+                object obj = ResourceManager.GetObject("computer-case", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

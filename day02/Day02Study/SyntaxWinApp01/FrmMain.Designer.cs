@@ -32,16 +32,6 @@
             BtnOk = new Button();
             SuspendLayout();
             // 
-            // BtnOk
-            // 
-            BtnOk.Location = new Point(366, 259);
-            BtnOk.Name = "BtnOk";
-            BtnOk.Size = new Size(100, 40);
-            BtnOk.TabIndex = 1;
-            BtnOk.Text = "오케이";
-            BtnOk.UseVisualStyleBackColor = true;
-            BtnOk.Click += BtnOk_Click;
-            // 
             // BtnMsg
             // 
             BtnMsg.Location = new Point(472, 259);
@@ -51,6 +41,16 @@
             BtnMsg.Text = "메시지";
             BtnMsg.UseVisualStyleBackColor = true;
             BtnMsg.Click += BtnMsg_Click;
+            // 
+            // BtnOk
+            // 
+            BtnOk.Location = new Point(366, 259);
+            BtnOk.Name = "BtnOk";
+            BtnOk.Size = new Size(100, 40);
+            BtnOk.TabIndex = 1;
+            BtnOk.Text = "오케이";
+            BtnOk.UseVisualStyleBackColor = true;
+            BtnOk.Click += BtnOk_Click;
             // 
             // FrmMain
             // 

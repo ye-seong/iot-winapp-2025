@@ -13,5 +13,5 @@ namespace SyntaxWinApp02
             ApplicationConfiguration.Initialize();
             Application.Run(new FrmMain());
         }
-    }
+    }    
 }

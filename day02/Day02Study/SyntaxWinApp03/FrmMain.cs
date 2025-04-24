@@ -1,4 +1,4 @@
-﻿namespace SyntaxWinApp03
+namespace SyntaxWinApp03
 {
     public partial class FrmMain : Form
     {
@@ -7,18 +7,13 @@
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnMsg_Click(object sender, EventArgs e)
         {
             // 분기문
             // if else 문
             if (TxtPain.Text == "아니오")
             {
-                MessageBox.Show("병원을 왜 왔어요. 집에 가!");
+                MessageBox.Show("병원을 왜 왔어요. 집에가!");
             }
             else if (TxtPain.Text == "네")
             {
@@ -27,27 +22,24 @@
                 // switch 문
                 switch (PainPoint)
                 {
+                    /*머리 눈 코 목 가슴 배*/
                     case "머리":
-                        MessageBox.Show("신경과로 갑니다.", "진료과선택");
+                        MessageBox.Show("신경과로 갑니다", "진료과선택");
                         break;
                     case "눈":
-                        MessageBox.Show("안과로 갑니다.", "진료과선택");
-                        break;
-                    case "코":
-                        MessageBox.Show("이비인후과로 갑니다.", "진료과선택");
+                        MessageBox.Show("안과로 갑니다", "진료과선택");
                         break;
                     case "목":
-                        MessageBox.Show("이비인후과로 갑니다.", "진료과선택");
+                    case "코":
+                        MessageBox.Show("이비인후과로 갑니다", "진료과선택");
                         break;
                     case "가슴":
-                        MessageBox.Show("내과로 갑니다.", "진료과선택");
+                        MessageBox.Show("내과로 갑니다", "진료과선택");
                         break;
                     case "배":
-                        MessageBox.Show("소화과로 갑니다.", "진료과선택");
+                        MessageBox.Show("소화과로 갑니다", "진료과선택");
                         break;
-                    default:
-                        MessageBox.Show("통증부위를 선택하세요.", "진료과선택");
-                        break;
+
                 }
             }
 
@@ -55,7 +47,7 @@
 
         private void TxtPain_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // 키프레스에서 엔터를 입력하면 C, C++ if문과 동일
+            // 키프레스에서 엔터를 입력하면 C,C++ if문과 동일
             if (e.KeyChar == (char)Keys.Enter)
             {
                 MessageBox.Show(TxtPain.Text, "입력값");
@@ -70,18 +62,16 @@
 
         private void BtnDisplay_Click(object sender, EventArgs e)
         {
-            //TxtResult.Clear(); // 결과창 초기화
-            TxtResult.Text = string.Empty; // 결과창 초기화
+            TxtResult.Text = string.Empty;  // 초기화
             // for문
-            for (int x = 1; x < 10; x++)
+            for (int x = 2; x < 10; x++)
             {
-                TxtResult.Text += "=======================" + x + "단=======================\r\n";
-                for (int y = 2; y < 10; y++)
+                for (int y = 1; y < 10; y++)
                 {
                     var result = x + "x" + y + "=" + (x * y);
                     TxtResult.Text += result + " ";
                 }
-                TxtResult.Text += "\r\n";   // 원래 윈도우는 \r\n을 같이 써야 함
+                TxtResult.Text += "\r\n";  // 원래 윈도우는 \r\n을 같이 써야 함
             }
         }
 
@@ -97,9 +87,9 @@
 
                 if (clickNum == 10)
                 {
-                    break;  // 반복문 탈출 for, foreach, while문에 사용가능
+                    break; // 반복문 탈출 for, foreach, while문에 사용가능
                     // continue; 도 파악할 것
-                    // goto; 는 웬만하면 쓰지 말것
+                    // goto; 는 왠만하면 쓰지 말것
                 }
             }
         }

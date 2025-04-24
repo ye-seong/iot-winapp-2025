@@ -2,7 +2,6 @@ using SyntaxWinApp02.Properties;
 
 namespace SyntaxWinApp02
 {
-    // sealed 더이상 자식 클래스를 만들고 싶지 않을때
     public partial class FrmMain : Form
     {
         public FrmMain()
@@ -12,20 +11,16 @@ namespace SyntaxWinApp02
 
         private void BtnCheck_Click(object sender, EventArgs e)
         {
-            //Computer computer = new Computer();
-            //Notebook notebook = new Notebook();
-            //Server server = new Server();
-
-            //Computer youCom = new Notebook();   // 부모클래스에 자식 객체를 할당
+            //Computer yourCom = new Notebook();  // 부모클래스에 자식 객체를 할당
             switch (CboDivision.SelectedIndex)
             {
                 case 0: // Computer
                     Computer myCom = new Computer();
-                    PicComputer.Image = Resources.laptop;
+                    PicComputer.Image = Resources.computer_case;
 
+                    myCom.Boot();
                     myCom.Reset();
                     myCom.ShutDown();
-                    myCom.Boot();
                     break;
 
                 case 1: // Notebook
@@ -44,15 +39,15 @@ namespace SyntaxWinApp02
                     {
                         Console.WriteLine("myComputer는 Notebook입니다.");
                         Notebook myBook2 = myComputer as Notebook;
-                        Console.WriteLine("MyComputer를 Notebook으로 변경!");
+                        Console.WriteLine("myComputer를 Notebook으로 변경!");
                     }
 
                     // 지문인식확인
                     bool hasFinger = myBook.HasFingerScanDevice();
-                    Console.WriteLine($"최초지문인식여부 : {hasFinger}");
+                    Console.WriteLine($"최초 지문인식여부 :: {hasFinger}");
                     // 메서드 오버로드
                     hasFinger = myBook.HasFingerScanDevice(true);
-                    Console.WriteLine($"최종지문인식여부 : {hasFinger}");
+                    Console.WriteLine($"최종 지문인식여부 :: {hasFinger}");
                     break;
 
                 case 2: // Server
@@ -65,17 +60,13 @@ namespace SyntaxWinApp02
             }
         }
 
-        private void CboDivision_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnCopy_Click(object sender, EventArgs e)
         {
             Server server1 = new Server();
             server1.Name = "HP서버";
 
-            Server server2 = server1;   // 얕은 복사 : 같은 내용 참조
+            // 얕은 복사 : 같은 내용 참조
+            Server server2 = server1;
             server2.Name = "DELL서버";
 
             bool isSame = server1.Equals(server2);
@@ -83,6 +74,7 @@ namespace SyntaxWinApp02
 
             MessageBox.Show($"{server1.Name}\r\n{server2.Name}", "서버명");
 
+            // 깊은 복사 : 완전 다른객체로 복사
             Server server3 = server1.DeepCopy();
             server3.Name = "INTEL서버";
 
@@ -90,7 +82,6 @@ namespace SyntaxWinApp02
             Console.WriteLine(isSame);
 
             MessageBox.Show($"{server1.Name}\r\n{server3.Name}", "서버명");
-
         }
     }
 }

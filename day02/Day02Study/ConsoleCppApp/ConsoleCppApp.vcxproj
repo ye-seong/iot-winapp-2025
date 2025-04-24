@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{501d4122-6bd8-46d3-b772-38083a7253ab}</ProjectGuid>
+    <ProjectGuid>{8e977001-4274-4563-a7c0-281b76620e8e}</ProjectGuid>
     <RootNamespace>ConsoleCppApp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

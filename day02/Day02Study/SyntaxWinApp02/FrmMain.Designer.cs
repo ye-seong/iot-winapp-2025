@@ -33,12 +33,14 @@
             // 
             // BtnMsg
             // 
+            BtnMsg.BackColor = SystemColors.ControlLightLight;
+            BtnMsg.ForeColor = Color.Red;
             BtnMsg.Location = new Point(472, 259);
             BtnMsg.Name = "BtnMsg";
             BtnMsg.Size = new Size(100, 40);
             BtnMsg.TabIndex = 0;
             BtnMsg.Text = "메시지";
-            BtnMsg.UseVisualStyleBackColor = true;
+            BtnMsg.UseVisualStyleBackColor = false;
             BtnMsg.Click += BtnMsg_Click;
             // 
             // FrmMain

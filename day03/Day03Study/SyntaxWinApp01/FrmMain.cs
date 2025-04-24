@@ -7,22 +7,23 @@ namespace SyntaxWinApp01
             InitializeComponent();
         }
 
-        private void BtnOk_Click(object sender, EventArgs e)
+        private void BtnCheck_Click(object sender, EventArgs e)
         {
             // 기본 생성자
-            Person jys = new Person();
-            jys.Name = TxtName.Text.Trim();
-            jys.Age = int.Parse(TxtAge.Text.Trim());
-            jys.Gender = char.Parse(TxtGender.Text.Trim());
-            jys.Phone = TxtPhone.Text.Trim();
+            Person hugo = new Person();
+            hugo.Name = TxtName.Text.Trim();
+            hugo.Age = int.Parse(TxtAge.Text.Trim());
+            
+            hugo.Gender = char.Parse(TxtGender.Text.Trim());
+            hugo.Phone = TxtPhone.Text.Trim();
 
             // 매개변수 생성자
-            Person kju = new Person("김준우", 30, 'M', "010-9876-5432");
+            Person ashely = new Person("애슐리", 42, 'F', "010-9839-7777");
 
-            TxtResult.Text += jys.ToString();
-            jys.GetUp();
-            jys.GoToSchool();
-
+            TxtResult.Text = hugo.ToString();
+            hugo.GetUp();
+            hugo.GoToSchool();
+            
             // static일 경우는 객체를 생성하지 않음
             Person.GetNumber();
         }
