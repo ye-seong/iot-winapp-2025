@@ -1076,4 +1076,7 @@ IoT 개발자 C#/WinApp 리포지토리 2025
 
 ## 10일차
 
+## ToyProject
+[시연영상](https://drive.google.com/file/d/1pM-h49r4YDHXmw-aK2kJ3KcUvgSAcV2B/view?usp=sharing)
+
 ### 코딩테스트
