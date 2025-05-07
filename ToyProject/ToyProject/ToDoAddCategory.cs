@@ -36,5 +36,13 @@ namespace ToyProject
                 Close();
             }
         }
+        public void ChangeColor(Color BackColor, Color TextColor)
+        {
+            this.BackColor = BackColor;
+            txtCategory.BackColor = BackColor;
+            txtCategory.ForeColor = TextColor;
+            btnOk.BackColor = BackColor;
+            btnOk.ForeColor = TextColor;
+        }
     }
 }

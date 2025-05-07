@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            comboBox1 = new ComboBox();
+            boxText = new ComboBox();
             label2 = new Label();
-            comboBox2 = new ComboBox();
-            btnSave = new Button();
-            button2 = new Button();
+            boxMode = new ComboBox();
+            btnSettingSave = new Button();
             groupBox1 = new GroupBox();
             btnDelete = new Button();
             btnAdd = new Button();
             boxCategoryList = new CheckedListBox();
             groupBox2 = new GroupBox();
-            openFileDialog1 = new OpenFileDialog();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -53,14 +51,15 @@
             label1.TabIndex = 0;
             label1.Text = "글꼴 :";
             // 
-            // comboBox1
+            // boxText
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "None", "a" });
-            comboBox1.Location = new Point(54, 22);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(138, 23);
-            comboBox1.TabIndex = 1;
+            boxText.FormattingEnabled = true;
+            boxText.Items.AddRange(new object[] { "Microsoft Sans Serif", "Segoe UI", "Tahoma", "Arial", "Times New Roman", "Verdana", "Courier New", "Comic Sans MS", "Georgia", "Lucida Console", "Lucida Sans Unicode", "Palatino Linotype", "Trebuchet MS", "Calibri", "Cambria" });
+            boxText.Location = new Point(54, 22);
+            boxText.Name = "boxText";
+            boxText.Size = new Size(138, 23);
+            boxText.TabIndex = 1;
+            boxText.SelectedIndexChanged += boxText_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -71,49 +70,41 @@
             label2.TabIndex = 2;
             label2.Text = "모드 :";
             // 
-            // comboBox2
+            // boxMode
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "화이트모드", "다크모드" });
-            comboBox2.Location = new Point(54, 51);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(138, 23);
-            comboBox2.TabIndex = 1;
+            boxMode.FormattingEnabled = true;
+            boxMode.Items.AddRange(new object[] { "화이트모드", "다크모드", "블루모드", "핑크모드" });
+            boxMode.Location = new Point(54, 51);
+            boxMode.Name = "boxMode";
+            boxMode.Size = new Size(138, 23);
+            boxMode.TabIndex = 1;
+            boxMode.SelectedIndexChanged += boxMode_SelectedIndexChanged;
             // 
-            // btnSave
+            // btnSettingSave
             // 
-            btnSave.Location = new Point(409, 403);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(98, 35);
-            btnSave.TabIndex = 3;
-            btnSave.Text = "저장";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(305, 403);
-            button2.Name = "button2";
-            button2.Size = new Size(98, 35);
-            button2.TabIndex = 4;
-            button2.Text = "복구";
-            button2.UseVisualStyleBackColor = true;
+            btnSettingSave.Location = new Point(305, 403);
+            btnSettingSave.Name = "btnSettingSave";
+            btnSettingSave.Size = new Size(98, 35);
+            btnSettingSave.TabIndex = 4;
+            btnSettingSave.Text = "확인";
+            btnSettingSave.UseVisualStyleBackColor = true;
+            btnSettingSave.Click += btnSettingSave_Click;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnAdd);
             groupBox1.Controls.Add(boxCategoryList);
-            groupBox1.Location = new Point(12, 105);
+            groupBox1.Location = new Point(12, 204);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(202, 292);
+            groupBox1.Size = new Size(202, 190);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "카테고리";
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(86, 140);
+            btnDelete.Location = new Point(87, 158);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(50, 23);
             btnDelete.TabIndex = 2;
@@ -123,7 +114,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(142, 140);
+            btnAdd.Location = new Point(143, 158);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(50, 23);
             btnAdd.TabIndex = 2;
@@ -137,35 +128,30 @@
             boxCategoryList.FormattingEnabled = true;
             boxCategoryList.Location = new Point(10, 22);
             boxCategoryList.Name = "boxCategoryList";
-            boxCategoryList.Size = new Size(182, 112);
+            boxCategoryList.Size = new Size(182, 130);
             boxCategoryList.TabIndex = 0;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(comboBox2);
+            groupBox2.Controls.Add(boxMode);
             groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(comboBox1);
+            groupBox2.Controls.Add(boxText);
             groupBox2.Location = new Point(12, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(202, 87);
+            groupBox2.Size = new Size(202, 186);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "디자이너";
-            // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
             // 
             // ToDoSetUp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(519, 450);
+            ClientSize = new Size(412, 450);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(button2);
-            Controls.Add(btnSave);
+            Controls.Add(btnSettingSave);
             Name = "ToDoSetUp";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TODO SetUp";
@@ -178,14 +164,12 @@
         #endregion
 
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox boxText;
         private Label label2;
-        private ComboBox comboBox2;
-        private Button btnSave;
-        private Button button2;
+        private ComboBox boxMode;
+        private Button btnSettingSave;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private OpenFileDialog openFileDialog1;
         private CheckedListBox boxCategoryList;
         private Button btnDelete;
         private Button btnAdd;

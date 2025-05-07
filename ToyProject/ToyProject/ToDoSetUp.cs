@@ -11,6 +11,7 @@ using static ToyProject.CategorySystem;
 using static System.Windows.Forms.CheckedListBox;
 using System.Globalization;
 using System.Reflection;
+using System.Runtime;
 
 namespace ToyProject.Properties
 {
@@ -19,7 +20,7 @@ namespace ToyProject.Properties
         private List<TodoItem> _todoItems;
         public List<TodoItem> TodoItem => _todoItems;
         private CategorySystem.CategoryManager _categoryManager;
-        public ToDoSetUp(List<TodoItem>items)
+        public ToDoSetUp(List<TodoItem> items)
         {
             InitializeComponent();
             GetCategory();
@@ -33,6 +34,8 @@ namespace ToyProject.Properties
             }
             _categoryManager.LoadCategories();
             boxCategoryList.Items.Clear();
+            boxText.SelectedItem = SettingsManager.Instance.GetSettings().TextStyle;
+            boxMode.SelectedItem = SettingsManager.Instance.GetSettings().ThemeName;
             foreach (var category in _categoryManager.GetCategoryName())
             {
                 boxCategoryList.Items.Add(category);
@@ -43,8 +46,8 @@ namespace ToyProject.Properties
         {
             public List<CategorySystem.Category> Categories { get; set; } = new List<CategorySystem.Category>();
             public bool EnableReminders { get; set; } = true;
-            public string DefaultView { get; set; } = "월별";
-            public string ThemeName { get; set; } = "기본";
+            public string TextStyle { get; set; } = "기본";
+            public string ThemeName { get; set; } = "화이트모드";
             public bool ShowCompletedTasks { get; set; } = true;
             // 기타 설정들...
         }
@@ -79,8 +82,9 @@ namespace ToyProject.Properties
             public List<CategorySystem.Category> Categories => _settings.Categories;
 
             // 설정 저장
-            public void SaveSettings()
+            public void SaveSettings(AppSettings setting)
             {
+                _settings = setting;
                 string json = System.Text.Json.JsonSerializer.Serialize(_settings);
                 File.WriteAllText(SettingsFile, json);
             }
@@ -107,8 +111,13 @@ namespace ToyProject.Properties
                     _settings = new AppSettings();
 
                     // 설정 파일 생성
-                    SaveSettings();
+                    SaveSettings(_settings);
                 }
+            }
+
+            public AppSettings GetSettings()
+            {
+                return _settings;
             }
         }
 
@@ -131,7 +140,7 @@ namespace ToyProject.Properties
                 if (GetItemsAsCategory(items[i].ToString()))
                 {
                     DialogResult result = MessageBox.Show("현재 해당 카테고리를 사용하고 있습니다. 삭제하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    switch(result)
+                    switch (result)
                     {
                         case DialogResult.Yes:
                             break;
@@ -145,11 +154,6 @@ namespace ToyProject.Properties
                 _categoryManager.Remove(items[i].ToString());
                 boxCategoryList.Items.Remove(items[i]);
             }
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            SettingsManager.Instance.SaveSettings();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -184,6 +188,59 @@ namespace ToyProject.Properties
                 }
             }
             TodoCalendar todoCalendar = new TodoCalendar();
+        }
+
+        private void btnSettingSave_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void boxMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AppSettings setting = SettingsManager.Instance.GetSettings();
+            setting.ThemeName = boxMode.SelectedItem.ToString();
+            SettingsManager.Instance.SaveSettings(setting);
+            if (setting.ThemeName == "화이트모드")
+            {
+                ChangeColor(Color.White, Color.Black);
+            }
+            else if (setting.ThemeName == "다크모드")
+            {
+                ChangeColor(Color.Black, Color.White);
+            }
+            else if (setting.ThemeName == "블루모드")
+            {
+                ChangeColor(Color.SlateGray, Color.White);
+            }
+            else if (setting.ThemeName == "핑크모드")
+            {
+                ChangeColor(Color.LightPink, Color.Black);
+            }
+        }
+
+        private void ChangeColor(Color backColor, Color textColor)
+        {
+            this.BackColor = backColor;
+            this.boxCategoryList.BackColor = backColor;
+            this.boxCategoryList.ForeColor = textColor;
+            this.btnAdd.BackColor = backColor;
+            this.btnDelete.BackColor = backColor;
+            this.btnSettingSave.BackColor = backColor;
+            this.boxText.BackColor = backColor;
+            this.boxText.ForeColor = textColor;
+            this.boxMode.BackColor = backColor;
+            this.boxMode.ForeColor = textColor;
+            this.ForeColor = textColor;
+            this.groupBox1.ForeColor = textColor;
+            this.groupBox2.ForeColor = textColor;
+        }
+
+        private void boxText_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AppSettings setting = SettingsManager.Instance.GetSettings();
+            setting.TextStyle = boxText.SelectedItem.ToString();
+            SettingsManager.Instance.SaveSettings(setting);
+            this.Font = new Font(boxText.SelectedItem.ToString(), 10, FontStyle.Regular);
         }
     }
 

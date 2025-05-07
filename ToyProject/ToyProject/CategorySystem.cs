@@ -84,6 +84,7 @@ namespace ToyProject
             private void SaveCategories()
             {
                 string json = System.Text.Json.JsonSerializer.Serialize(_categories);
+
                 File.WriteAllText("categories.json", json);
             }
 
